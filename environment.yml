@@ -1,0 +1,10 @@
+name: tunisianllm
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - notebook
+  - pytorch-cuda=12.1
+  - torchaudio
+  - pytorch
+  - torchvision
