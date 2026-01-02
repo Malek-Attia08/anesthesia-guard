@@ -26,3 +26,9 @@ Thumbs.db
 # Environment
 .env
 *.env.*
+
+
+# model folders
+TunCHAT-V0.2/
+vosk-model/
+tmp_offload/
