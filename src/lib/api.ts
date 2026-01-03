@@ -4,6 +4,7 @@ const API_BASE_URL = "http://localhost:8050";
 export interface OcrScanResponse {
   drugName: string;
   subCategory: string;
+  confidence?: number;
 }
 
 export interface ProtocolResponse {
@@ -37,6 +38,7 @@ export interface ScannedMedication {
   genericName: string;
   instruction: string;
   riskLevel: "STOP" | "CONTINUE";
+  confidence?: number;
   scannedAt: string;
 }
 
@@ -178,10 +180,10 @@ export function mockScanMedication(): Promise<OcrScanResponse> {
   return new Promise((resolve) => {
     setTimeout(() => {
       const drugs = [
-        { drugName: "Kardegic", subCategory: "Aspirine" },
-        { drugName: "Doliprane", subCategory: "Paracétamol" },
-        { drugName: "Previscan", subCategory: "Fluindione" },
-        { drugName: "Levothyrox", subCategory: "Lévothyroxine" },
+        { drugName: "Kardegic", subCategory: "Aspirine", confidence: 0.95 },
+        { drugName: "Doliprane", subCategory: "Paracétamol", confidence: 0.92 },
+        { drugName: "Previscan", subCategory: "Fluindione", confidence: 0.88 },
+        { drugName: "Levothyrox", subCategory: "Lévothyroxine", confidence: 0.91 },
       ];
       resolve(drugs[Math.floor(Math.random() * drugs.length)]);
     }, 1500);
@@ -229,3 +231,10 @@ export function mockEvaluateASA(): Promise<ASAEvaluateResponse> {
     }, 500);
   });
 }
+
+// API object for easy access (uses mocks for now)
+export const api = {
+  scanDrug: mockScanMedication,
+  getProtocol: mockGetProtocol,
+  evaluateASA: mockEvaluateASA,
+};
