@@ -45,6 +45,14 @@ const menuItems = [
     color: "from-indigo-500 to-violet-600",
     bgColor: "bg-indigo-50 dark:bg-indigo-950/30",
   },
+  {
+    title: "Détection d'émotion",
+    description: "Analysez vos émotions via la caméra pour le suivi",
+    icon: Camera,
+    path: "/patient/emotion",
+    color: "from-fuchsia-500 to-purple-600",
+    bgColor: "bg-fuchsia-50 dark:bg-fuchsia-950/30",
+  },
 ];
 
 export default function PatientHome() {
